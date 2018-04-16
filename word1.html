@@ -4,35 +4,54 @@
   <title>Word of Wisdom</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <script>
+   var Links = {
+     setColor:function (color){
+       var alist = document.querySelectorAll('a');
+       var i = 0;
+       while(i < alist.length){
+         alist[i].style.color = color;
+         i = i + 1;
+       }
+     }
+   }
+
+    var Body = {
+      setColor:function (color){
+      document.querySelector('body').style.color = color;
+    },
+      setBackgroundColor: function (color){
+        document.querySelector('body').style.backgroundColor = color;
+      }
+    }
+
+    function nightDayHandler(self){
+      var target = document.querySelector('body');
+      if(self.value === 'night'){
+        Body.setBackgroundColor('black');
+        Body.setColor('white');
+        self.value = 'day';
+
+        Links.setColor('powderblue');
+      }
+      else {
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
+        self.value = 'night';
+
+        Links.setColor('blue');
+      }
+    }
+  </script>
 
 </head>
 <body>
   <h1><a href="index.html">WordOfWisdom</a></h1>
-    <input id="night_day" type="button" value="night" onclick="
-      var target = document.querySelector('body');
-      if(this.value === 'night'){
-        target.style.backgroundColor = 'black';
-        target.style.color = 'white';
-        this.value = 'day';
+  <input id="night_day" type="button" value="night" onclick="
+  nightDayHandler(this);
+  ">
 
-        var alist = document.querySelectorAll('a');
-        var i = 0;
-        while(i < alist.length){
-        alist[i].style.color = 'powderblue';
-        i = i + 1;}
-      } else {
-        target.style.backgroundColor = 'white';
-        target.style.color = 'black';
-        this.value = 'night';
-
-        var alist = document.querySelectorAll('a');
-        var i = 0;
-        while(i < alist.length){
-        alist[i].style.color = 'blue';
-        i = i + 1;}
-      }
-    ">
-<div id="grid">
+ <div id= "grid">
   <ol>
     <li><a href="word1.html">긍휼</a></li><br><br>
     <li><a href="word2.html">임마누엘</a></li><br><br>
@@ -40,7 +59,7 @@
     <li><a href="word4.html">창세</a></li><br><br>
     <li><a href="word5.html">만나</a></li><br><br>
   </ol>
-  <div id="article">
+  <div id= "article">
     <h2 style="color:coral;">긍휼</h2>
     <p>
       긍휼은 비참함으로 가서 함께 나누는 것
